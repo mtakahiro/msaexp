@@ -1143,7 +1143,10 @@ def build_slit_centered_wcs(slit, waves, pscale_ratio=1, ypad=0, force_nypix=21,
             prof = np.nansum(_drz[0].data, axis=1)
         
         if prof.max() == 0:
-            return _data
+            # TM;
+            yoff = slit.source_ypos/0.1 - 0.5
+            slit.drizzle_slit_offset = yoff
+            return _data, slit
         
         xc = (np.arange(len(prof))*prof).sum()/prof.sum()
         yoff = xc - (force_nypix-1)/2 + phase
@@ -1161,7 +1164,9 @@ def build_slit_centered_wcs(slit, waves, pscale_ratio=1, ypad=0, force_nypix=21,
                                           fix_slope=fix_slope,
                                           ) 
     
-    return _xdata
+    # TM
+    # return _xdata
+    return _xdata, slit
 
 
 def longslit_header_from_wcs(wcs):

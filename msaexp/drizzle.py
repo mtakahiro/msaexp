@@ -96,7 +96,9 @@ def center_wcs(slit, waves, center_on_source=False, force_nypix=31, fix_slope=No
     
     """
     # Centered on source
-    wcs_data = utils.build_slit_centered_wcs(slit, waves,
+    # wcs_data = utils.build_slit_centered_wcs(slit, waves,
+    # TM
+    wcs_data, slit = utils.build_slit_centered_wcs(slit, waves,
                                              force_nypix=force_nypix,
                                              center_on_source=True,
                                              get_from_ypos=False,
@@ -110,7 +112,9 @@ def center_wcs(slit, waves, center_on_source=False, force_nypix=31, fix_slope=No
     if center_on_source:
         offset_to_source = 0.0
     else:
-        wcs_data = utils.build_slit_centered_wcs(slit, waves,
+        # wcs_data = utils.build_slit_centered_wcs(slit, waves,
+        # TM
+        wcs_data, slit = utils.build_slit_centered_wcs(slit, waves,
                                                     force_nypix=force_nypix,
                                                     center_on_source=False,
                                                     get_from_ypos=False,
